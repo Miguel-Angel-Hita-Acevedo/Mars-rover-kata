@@ -1,27 +1,25 @@
+from mars_rovers import MarsRover
 
 class MainTerminal():
     def __init__(self):
         pass
 
-    def execute_command(self, input):
-        x = 0
-        y = 0
-        rotation = 'N'
-        if input == "":
-            return "0:0:N"
-        # "MRMM" = 1:2:E
+    def execute(self, input):
+        mars_rover = MarsRover()
+        
         for command in input:
-            if command == "M":
-                if rotation == "N":
-                    y += 1
-                if rotation == "E":
-                    x += 1
-            if command == "R" and rotation == "N":
-                rotation = "E"
-                
+            mars_rover = self._execute_command(command, mars_rover)
+        return self._build_result(mars_rover)
 
+    def _build_result(self, mars_rover):
+        return str(mars_rover.x) + ":" + str(mars_rover.y) + ":" + mars_rover.direction
 
-        return self._buildResult(x, y, rotation)
-
-    def _buildResult(self,x, y, rotation):
-            return str(x) + ":" + str(y) + ":" + rotation
+    def _execute_command(self, command, mars_rover):
+        if command == "M":
+            if mars_rover.direction == "N":
+                mars_rover.y += 1
+            if mars_rover.direction == "E":
+                mars_rover.x += 1
+        if command == "R" and mars_rover.direction == "N":
+            mars_rover.direction = "E"
+        return mars_rover

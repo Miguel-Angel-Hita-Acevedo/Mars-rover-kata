@@ -16,10 +16,7 @@ class MainTerminal():
 
     def _execute_command(self, command, mars_rover):
         if command == "M":
-            if mars_rover.direction == "N":
-                mars_rover.y += 1
-            if mars_rover.direction == "E":
-                mars_rover.x += 1
-        if command == "R" and mars_rover.direction == "N":
-            mars_rover.direction = "E"
+            mars_rover.move()
+        else:
+            mars_rover.rotate(command)
         return mars_rover

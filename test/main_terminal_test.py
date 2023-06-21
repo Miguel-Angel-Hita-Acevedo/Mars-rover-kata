@@ -29,11 +29,16 @@ class main_terminal_test(unittest.TestCase):
         self.assertEqual("0:8:S", output)
 
     def test_turn_right_five_times_and_move(self):
-            main_terminal = MainTerminal()
-            output = main_terminal.execute("RRRRRM")
-            self.assertEqual("1:0:E", output)
-            
+        main_terminal = MainTerminal()
+        output = main_terminal.execute("RRRRRM")
+        self.assertEqual("1:0:E", output)
+        
     def test_turn_left_five_times_and_turn_around(self):
-            main_terminal = MainTerminal()
-            output = main_terminal.execute("LLLLLLM")
-            self.assertEqual("0:9:S", output)
+        main_terminal = MainTerminal()
+        output = main_terminal.execute("LLLLLLM")
+        self.assertEqual("0:9:S", output)
+
+    def test_move_up_ten_times_and_turn_around_to_initial_position(self):
+        main_terminal = MainTerminal()
+        output = main_terminal.execute("MMMMMMMMMM")
+        self.assertEqual("0:0:N", output)

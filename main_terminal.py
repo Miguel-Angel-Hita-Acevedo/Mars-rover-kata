@@ -6,7 +6,6 @@ class MainTerminal():
 
     def execute(self, input):
         mars_rover = MarsRover()
-        
         for command in input:
             mars_rover = self._execute_command(command, mars_rover)
         return self._build_result(mars_rover)
@@ -23,7 +22,12 @@ class MainTerminal():
         return mars_rover
     
     def _turn_around(self, mars_rover):
-        if mars_rover.x == -1:
-            mars_rover.x = 9
-        if mars_rover.y == -1:
-            mars_rover.y = 9
+        mars_rover.x = self.turn_around_for_cardinal_(mars_rover.x)
+        mars_rover.y = self.turn_around_for_cardinal_(mars_rover.y)
+
+    def turn_around_for_cardinal_(self, var):
+        if var <= -1:
+            var = 9
+        if var >= 10:
+            var = 0
+        return var

@@ -42,3 +42,13 @@ class main_terminal_test(unittest.TestCase):
         main_terminal = MainTerminal()
         output = main_terminal.execute("MMMMMMMMMM")
         self.assertEqual("0:0:N", output)
+
+    def test_move_and_find_obstacle(self):
+        main_terminal = MainTerminal([(0,1)])
+        output = main_terminal.execute("M")
+        self.assertEqual("O:0:0:N", output)
+
+    def test_move_three_times_and_find_obstacle(self):
+        main_terminal = MainTerminal([(0, 3)])
+        output = main_terminal.execute("MMMM")
+        self.assertEqual("O:0:2:N", output)

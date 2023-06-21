@@ -17,3 +17,23 @@ class main_terminal_test(unittest.TestCase):
         main_terminal = MainTerminal()
         output = main_terminal.execute("MRMM")
         self.assertEqual("2:1:E", output)
+
+    def test_left_and_move_to_turn_around(self):
+        main_terminal = MainTerminal()
+        output = main_terminal.execute("LM")
+        self.assertEqual("9:0:W", output)
+
+    def test_left_twice_and_turn_around_with_final_move(self):
+        main_terminal = MainTerminal()
+        output = main_terminal.execute("LLMM")
+        self.assertEqual("0:8:S", output)
+
+    def test_turn_right_five_times_and_move(self):
+            main_terminal = MainTerminal()
+            output = main_terminal.execute("RRRRRM")
+            self.assertEqual("1:0:E", output)
+            
+    def test_turn_left_five_times_and_turn_around(self):
+            main_terminal = MainTerminal()
+            output = main_terminal.execute("LLLLLLM")
+            self.assertEqual("0:9:S", output)

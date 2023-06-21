@@ -17,6 +17,13 @@ class MainTerminal():
     def _execute_command(self, command, mars_rover):
         if command == "M":
             mars_rover.move()
+            self._turn_around(mars_rover)
         else:
             mars_rover.rotate(command)
         return mars_rover
+    
+    def _turn_around(self, mars_rover):
+        if mars_rover.x == -1:
+            mars_rover.x = 9
+        if mars_rover.y == -1:
+            mars_rover.y = 9
